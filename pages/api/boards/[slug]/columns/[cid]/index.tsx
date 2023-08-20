@@ -11,6 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     switch (requestType) {
       case 'PATCH': {
+        console.log('patching column', req.body);
         const board = await db
           .collection('columns')
           .updateOne({ _id: cid }, { $set: { ...req.body } });

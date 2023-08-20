@@ -132,7 +132,7 @@ export const updateColumnSequence = createAsyncThunk(
   async (obj: { _id: string; sequence: number }, { getState }) => {
     const { board } = getState() as { board: BoardSlice };
     const { _id, sequence } = obj;
-
+    console.log('updateSlice ', _id, sequence);
     const data = {
       _id,
       sequence

@@ -92,7 +92,7 @@ const BoardColumns: FC = (): JSX.Element => {
     // Now we don't to fetch the cards again
     await dispatch(updateCardSequenceToLocalState(patchCard));
     await dispatch(updateCardSequence(patchCard));
-
+    // update every card sequence after the card which is dragged and makes patch request to the server
     for (let i = destinationIndex; i < sortedCards.length; i++) {
       const card = sortedCards[i];
       sequence += 1;
@@ -115,7 +115,7 @@ const BoardColumns: FC = (): JSX.Element => {
     const sortedColumns = filteredColumns.sort((a, b) => a.sequence - b.sequence);
 
     let sequence = destinationIndex === 0 ? 1 : sortedColumns[destinationIndex - 1].sequence + 1;
-
+    console.log('sequence', sequence);
     const patchColumn = {
       _id: columnId,
       sequence
@@ -141,7 +141,7 @@ const BoardColumns: FC = (): JSX.Element => {
 
     // Added temporarily to refresh the page on column, otherwise it will not reflect the changes
     // Will be fixed later
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
